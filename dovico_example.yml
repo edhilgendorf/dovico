@@ -1,0 +1,18 @@
+company: MyCompany
+user: someone@email.com
+pass: "secret"
+
+rows:
+  - name: meetings
+    row: 3
+    text: test
+    hours: 1.5
+
+  - name: time
+    row: 5
+    text: some-text
+    hours:
+      default: 8
+      mon: 5
+      tue: 3
+      fri: 6
