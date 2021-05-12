@@ -12,4 +12,4 @@ Set hours as needed. Days can be specified for hours if they differ. If multiple
 execute sript: python3 dovico.py
 There is a 20 second timer before it will start entering hours, in this time period select the current week you are editing.
 ### Example Run:
-![](dovico_yml.mp4)
+![dovico video](dovico_yml.mp4)
