@@ -4,10 +4,9 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import yaml
 
-# TODO README.md
-# TODO quick example video
-# TODO upload to GH
-
+# TODO check for vacation hours, if 8 then remove all cells for that day
+# TODO update to be from sunday to saturday
+# TODO refactor
 
 def switch_to_time_frame():
     for frame in [1, 0, 2, 1, 1]:
@@ -79,36 +78,40 @@ with open("dovico.yml", 'r') as stream:
                                     str(cat["text"]),
                                     str(cat["hours"]["mon"]))
                     else:
-                        set_default_hours()
+                        if "default" in cat["hours"]:
+                            set_default_hours()
                 elif day == "4":
                     if "tue" in cat["hours"]:
                         update_cell(day, str(cat["row"]),
                                     str(cat["text"]),
                                     str(cat["hours"]["tue"]))
                     else:
-                        set_default_hours()
+                        if "default" in cat["hours"]:
+                            set_default_hours()
                 elif day == "5":
                     if "wed" in cat["hours"]:
                         update_cell(day, str(cat["row"]),
                                     str(cat["text"]),
                                     str(cat["hours"]["wed"]))
                     else:
-                        set_default_hours()
+                        if "default" in cat["hours"]:
+                            set_default_hours()
                 elif day == "6":
                     if "thu" in cat["hours"]:
                         update_cell(day, str(cat["row"]),
                                     str(cat["text"]),
                                     str(cat["hours"]["thu"]))
                     else:
-                        set_default_hours()
-
+                        if "default" in cat["hours"]:
+                            set_default_hours()
                 elif day == "7":
                     if "fri" in cat["hours"]:
                         update_cell(day, str(cat["row"]),
                                     str(cat["text"]),
                                     str(cat["hours"]["fri"]))
                     else:
-                        set_default_hours()
+                        if "default" in cat["hours"]:
+                            set_default_hours()
                 switch_to_desc_frame()
                 update_desc(str(cat["text"]))
                 driver.switch_to.default_content()
