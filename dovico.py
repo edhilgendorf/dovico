@@ -8,6 +8,7 @@ import yaml
 # TODO update to be from sunday to saturday
 # TODO refactor
 
+
 def switch_to_time_frame():
     for frame in [1, 0, 2, 1, 1]:
         driver.switch_to.frame(frame)
