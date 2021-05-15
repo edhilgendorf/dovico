@@ -63,6 +63,52 @@ def set_default_hours():
                 str(cat["hours"]["default"]))
 
 
+def set_hours_explicit():
+    if day == "3":
+        if "mon" in cat["hours"]:
+            update_cell(day, str(cat["row"]),
+                        str(cat["text"]),
+                        str(cat["hours"]["mon"]))
+        else:
+            if "default" in cat["hours"]:
+                set_default_hours()
+    elif day == "4":
+        if "tue" in cat["hours"]:
+            update_cell(day, str(cat["row"]),
+                        str(cat["text"]),
+                        str(cat["hours"]["tue"]))
+        else:
+            if "default" in cat["hours"]:
+                set_default_hours()
+    elif day == "5":
+        if "wed" in cat["hours"]:
+            update_cell(day, str(cat["row"]),
+                        str(cat["text"]),
+                        str(cat["hours"]["wed"]))
+        else:
+            if "default" in cat["hours"]:
+                set_default_hours()
+    elif day == "6":
+        if "thu" in cat["hours"]:
+            update_cell(day, str(cat["row"]),
+                        str(cat["text"]),
+                        str(cat["hours"]["thu"]))
+        else:
+            if "default" in cat["hours"]:
+                set_default_hours()
+    elif day == "7":
+        if "fri" in cat["hours"]:
+            update_cell(day, str(cat["row"]),
+                        str(cat["text"]),
+                        str(cat["hours"]["fri"]))
+        else:
+            if "default" in cat["hours"]:
+                set_default_hours()
+    switch_to_desc_frame()
+    update_desc(str(cat["text"]))
+    driver.switch_to.default_content()
+
+
 with open("dovico.yml", 'r') as stream:
     driver = init_driver()
     do_yml = yaml.safe_load(stream)
@@ -73,49 +119,7 @@ with open("dovico.yml", 'r') as stream:
             switch_to_time_frame()
             hours = cat["hours"]
             if type(hours) is dict:
-                if day == "3":
-                    if "mon" in cat["hours"]:
-                        update_cell(day, str(cat["row"]),
-                                    str(cat["text"]),
-                                    str(cat["hours"]["mon"]))
-                    else:
-                        if "default" in cat["hours"]:
-                            set_default_hours()
-                elif day == "4":
-                    if "tue" in cat["hours"]:
-                        update_cell(day, str(cat["row"]),
-                                    str(cat["text"]),
-                                    str(cat["hours"]["tue"]))
-                    else:
-                        if "default" in cat["hours"]:
-                            set_default_hours()
-                elif day == "5":
-                    if "wed" in cat["hours"]:
-                        update_cell(day, str(cat["row"]),
-                                    str(cat["text"]),
-                                    str(cat["hours"]["wed"]))
-                    else:
-                        if "default" in cat["hours"]:
-                            set_default_hours()
-                elif day == "6":
-                    if "thu" in cat["hours"]:
-                        update_cell(day, str(cat["row"]),
-                                    str(cat["text"]),
-                                    str(cat["hours"]["thu"]))
-                    else:
-                        if "default" in cat["hours"]:
-                            set_default_hours()
-                elif day == "7":
-                    if "fri" in cat["hours"]:
-                        update_cell(day, str(cat["row"]),
-                                    str(cat["text"]),
-                                    str(cat["hours"]["fri"]))
-                    else:
-                        if "default" in cat["hours"]:
-                            set_default_hours()
-                switch_to_desc_frame()
-                update_desc(str(cat["text"]))
-                driver.switch_to.default_content()
+                set_hours_explicit()
             else:
                 update_cell(day, str(cat["row"]),
                             str(cat["text"]),
